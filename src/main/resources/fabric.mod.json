@@ -11,7 +11,7 @@
         "repo": "www.github.com/URTOJU/WarTractors"
     },
     "license": "All-Rights-Reserved",
-    "_icon": "assets/war-tractors/icon.png",
+    "icon": "assets/war-tractors/icon.png",
     "environment": "*",
     "entrypoints": {
         "client": [
