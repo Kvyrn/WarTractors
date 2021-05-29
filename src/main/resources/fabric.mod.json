@@ -1,0 +1,32 @@
+{
+    "schemaVersion": 1,
+    "id": "war-tractors",
+    "version": "${version}",
+    "name": "WarTractors",
+    "description": "Fight with... tractors?",
+    "authors": [
+        "URTOJU"
+    ],
+    "contact": {
+        "repo": "www.github.com/URTOJU/WarTractors"
+    },
+    "license": "All-Rights-Reserved",
+    "_icon": "assets/war-tractors/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "client": [
+            "io.github.urtoju.wartractors.client.WarTractorsClient"
+        ],
+        "main": [
+            "io.github.urtoju.wartractors.WarTractors"
+        ]
+    },
+    "mixins": [
+        "war-tractors.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.11.3",
+        "fabric": "*",
+        "minecraft": "1.16.5"
+    }
+}
