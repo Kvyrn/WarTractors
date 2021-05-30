@@ -7,20 +7,20 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 
 public class WheelModel extends EntityModel<Entity> {
-    private final ModelPart wheel;
-    private final ModelPart outline;
-    private final ModelPart inside;
-    private final ModelPart indent;
+    public final ModelPart wheel;
+    public final ModelPart outline;
+    public final ModelPart inside;
+    public final ModelPart indent;
 
     public WheelModel() {
         textureWidth = 64;
         textureHeight = 64;
         wheel = new ModelPart(this);
-        wheel.setPivot(0.0F, 24.0F, 0.0F);
+        wheel.setPivot(0.0F, 16.0F, 0.0F);
 
 
         outline = new ModelPart(this);
-        outline.setPivot(0.0F, 0.0F, 0.0F);
+        outline.setPivot(5.5F, 8.0F, 0.0F);
         wheel.addChild(outline);
         outline.setTextureOffset(28, 0).addCuboid(-8.0F, -14.0F, -6.0F, 5.0F, 2.0F, 1.0F, 0.0F, false);
         outline.setTextureOffset(16, 16).addCuboid(-8.0F, -1.0F, -3.0F, 5.0F, 1.0F, 6.0F, 0.0F, false);
@@ -53,7 +53,7 @@ public class WheelModel extends EntityModel<Entity> {
         outline.setTextureOffset(43, 16).addCuboid(-8.0F, -14.0F, 5.0F, 5.0F, 2.0F, 1.0F, 0.0F, false);
 
         inside = new ModelPart(this);
-        inside.setPivot(0.0F, 0.0F, 0.0F);
+        inside.setPivot(5.5F, 8.0F, 0.0F);
         wheel.addChild(inside);
         inside.setTextureOffset(0, 17).addCuboid(-7.0F, -11.0F, -2.0F, 4.0F, 6.0F, 4.0F, 0.0F, false);
         inside.setTextureOffset(44, 4).addCuboid(-7.0F, -10.0F, 2.0F, 4.0F, 4.0F, 1.0F, 0.0F, false);
@@ -64,7 +64,7 @@ public class WheelModel extends EntityModel<Entity> {
         inside.setTextureOffset(0, 0).addCuboid(-7.5F, -7.25F, 0.75F, 1.0F, 1.0F, 1.0F, 0.0F, false);
 
         indent = new ModelPart(this);
-        indent.setPivot(0.0F, 0.0F, 0.0F);
+        indent.setPivot(5.5F, 8.0F, 0.0F);
         wheel.addChild(indent);
         indent.setTextureOffset(16, 0).addCuboid(-7.0F, -4.0F, -2.0F, 4.0F, 3.0F, 4.0F, 0.0F, false);
         indent.setTextureOffset(37, 37).addCuboid(-7.0F, -5.0F, -4.0F, 4.0F, 3.0F, 2.0F, 0.0F, false);
@@ -94,7 +94,6 @@ public class WheelModel extends EntityModel<Entity> {
 
     @Override
     public void render(MatrixStack matrixStack, VertexConsumer buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-
         wheel.render(matrixStack, buffer, packedLight, packedOverlay);
     }
 

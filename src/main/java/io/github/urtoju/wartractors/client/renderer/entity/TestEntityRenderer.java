@@ -11,6 +11,7 @@ import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.MathHelper;
 
 public class TestEntityRenderer extends EntityRenderer<Entity> {
     public static final Identifier WHEEL_TEXTURE = new Identifier(WarTractors.modid, "textures/entities/tractor_common/wheel.png");
@@ -23,8 +24,12 @@ public class TestEntityRenderer extends EntityRenderer<Entity> {
     @Override
     public void render(Entity entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light) {
         super.render(entity, yaw, tickDelta, matrices, vertexConsumers, light);
+        matrices.push();
+        model.wheel.pitch = MathHelper.lerp(tickDelta, entity.age - 1, entity.age) / 10;
+        matrices.translate(0, -0.5f, 0);
         VertexConsumer vertexConsumer = ItemRenderer.getDirectItemGlintConsumer(vertexConsumers, this.model.getLayer(this.getTexture(entity)), false, false);
         model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
+        matrices.pop();
     }
 
     @Override
