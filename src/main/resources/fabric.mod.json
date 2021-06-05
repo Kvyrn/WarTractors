@@ -8,7 +8,10 @@
         "URTOJU"
     ],
     "contact": {
-        "repo": "www.github.com/URTOJU/WarTractors"
+        "repo": "https://www.github.com/URTOJU/WarTractors",
+        "homepage": "https://www.github.com/URTOJU/WarTractors",
+        "issues": "https://www.github.com/URTOJU/WarTractors/issues",
+        "sources": "https://www.github.com/URTOJU/WarTractors"
     },
     "license": "All-Rights-Reserved",
     "icon": "assets/war-tractors/icon.png",

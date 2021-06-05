@@ -1,12 +1,12 @@
 package io.github.urtoju.wartractors.client.renderer.entity.model;
 
-import io.github.urtoju.wartractors.entities.AbstractTractorEntity;
+import io.github.urtoju.wartractors.entities.TractorEntity;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 
-public class TractorModel extends EntityModel<AbstractTractorEntity> {
+public class TractorModel extends EntityModel<TractorEntity> {
     private final ModelPart body;
 
     public TractorModel() {
@@ -40,6 +40,6 @@ public class TractorModel extends EntityModel<AbstractTractorEntity> {
     }
 
     @Override
-    public void setAngles(AbstractTractorEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
+    public void setAngles(TractorEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
     }
 }
