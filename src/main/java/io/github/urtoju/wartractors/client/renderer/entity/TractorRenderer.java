@@ -14,7 +14,9 @@ public class TractorRenderer extends EntityRenderer<TractorEntity> {
 
     @Override
     public void render(TractorEntity entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light) {
-        entity.getRenderer().render(this.dispatcher, entity, yaw, tickDelta, matrices, vertexConsumers, light);
+        if (!entity.isInvisible()) {
+            entity.getRenderer().render(this.dispatcher, entity, yaw, tickDelta, matrices, vertexConsumers, light);
+        }
         super.render(entity, yaw, tickDelta, matrices, vertexConsumers, light);
     }
 

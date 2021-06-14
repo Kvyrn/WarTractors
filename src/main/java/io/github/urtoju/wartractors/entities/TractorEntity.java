@@ -10,10 +10,13 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.impl.networking.ServerSidePacketRegistryImpl;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.MovementType;
+import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Packet;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
@@ -64,6 +67,48 @@ public class TractorEntity extends Entity {
     @Override
     protected void writeCustomDataToTag(CompoundTag tag) {
         tag.putString("type", this.type.toString());
+    }
+
+    @Override
+    public boolean collidesWith(Entity other) {
+        return BoatEntity.method_30959(this, other);
+    }
+
+    @Override
+    public boolean isCollidable() {
+        return true;
+    }
+
+    @Override
+    public boolean isPushable() {
+        return true;
+    }
+
+    //TODO: find right height
+    @Override
+    public double getMountedHeightOffset() {
+        return super.getMountedHeightOffset() - 0.6D;
+    }
+
+    @Override
+    public void updatePassengerPosition(Entity passenger) {
+        super.updatePassengerPosition(passenger);
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if (this.isLogicalSideForUpdatingMovement()) {
+            Vec3d prevVelocity = this.getVelocity();
+            double y = prevVelocity.y;
+            if (!this.hasNoGravity()) {
+                y -= 0.03999999910593033D;
+            }
+            this.setVelocity(prevVelocity.x * 0.2d, y, prevVelocity.z * 0.2d);
+            this.move(MovementType.SELF, this.getVelocity());
+        }
+        this.checkBlockCollision();
+        //this.updateTrackedPosition(this.getX(), this.getY(), this.getZ());
     }
 
     @Environment(EnvType.CLIENT)

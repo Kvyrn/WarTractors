@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 
 public class TestEntityRenderer extends EntityRenderer<TestEntity> {
-    public static final Identifier WHEEL_TEXTURE = new Identifier(WarTractors.modid, "textures/entities/tractor_common/wheel.png");
+    public static final Identifier WHEEL_TEXTURE = new Identifier(WarTractors.modid, "textures/entities/tractor/wheel.png");
     private final WheelModel model = new WheelModel();
 
     public TestEntityRenderer(EntityRenderDispatcher dispatcher) {
