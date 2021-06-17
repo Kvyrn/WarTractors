@@ -6,10 +6,10 @@ import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 
-public class TractorModel extends EntityModel<TractorEntity> {
+public class BasicChassisModel extends EntityModel<TractorEntity> {
     private final ModelPart body;
 
-    public TractorModel() {
+    public BasicChassisModel() {
         textureWidth = 128;
         textureHeight = 128;
         body = new ModelPart(this);

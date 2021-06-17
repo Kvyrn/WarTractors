@@ -1,12 +1,15 @@
 TODO:
 ====
+- [x] modular tractor system
 - [ ] wheel types
 - [ ] other tractors
 - [ ] coloring tractors
 - [ ] tractor creating table
 - [ ] tractor physics
 - [ ] weapons
+- [ ] weapon rendering
 - [ ] turrets
+- [ ] tractor passenger position
 
 
 <h3>Markdown:</h3>
