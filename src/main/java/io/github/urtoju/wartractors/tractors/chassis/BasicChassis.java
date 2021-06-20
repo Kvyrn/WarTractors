@@ -83,7 +83,7 @@ public class BasicChassis implements ITractorChassis {
         matrices.push();
         matrices.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(180));
         VertexConsumer vertexConsumer = vertexConsumers.getBuffer(MODEL.getLayer(TEXTURE));
-        MODEL.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
+        MODEL.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, entity.getRed(), entity.getGreen(), entity.getBlue(), 1);
         matrices.pop();
     }
 

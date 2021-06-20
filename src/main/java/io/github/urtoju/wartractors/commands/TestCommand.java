@@ -1,4 +1,4 @@
-package io.github.urtoju.wartractors.util;
+package io.github.urtoju.wartractors.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.command.argument.EntityArgumentType;

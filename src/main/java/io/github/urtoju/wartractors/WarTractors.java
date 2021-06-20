@@ -1,9 +1,10 @@
 package io.github.urtoju.wartractors;
 
+import io.github.urtoju.wartractors.commands.TractorCommand;
 import io.github.urtoju.wartractors.registry.EntityRegistry;
 import io.github.urtoju.wartractors.tractors.chassis.BasicChassis;
 import io.github.urtoju.wartractors.tractors.wheels.BasicWheel;
-import io.github.urtoju.wartractors.util.TestCommand;
+import io.github.urtoju.wartractors.commands.TestCommand;
 import io.github.urtoju.wartractors.util.tractortypes.ITractorChassis;
 import io.github.urtoju.wartractors.util.tractortypes.ITractorWeaponType;
 import io.github.urtoju.wartractors.util.tractortypes.ITractorWheel;
@@ -14,7 +15,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 
 public class WarTractors implements ModInitializer {
     public static final String modid = "war-tractors";
@@ -35,6 +35,7 @@ public class WarTractors implements ModInitializer {
 
         CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> {
             TestCommand.register(dispatcher);
+            TractorCommand.register(dispatcher);
         });
     }
 

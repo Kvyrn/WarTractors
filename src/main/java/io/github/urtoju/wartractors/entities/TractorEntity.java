@@ -15,6 +15,9 @@ import net.fabricmc.fabric.impl.networking.ServerSidePacketRegistryImpl;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MovementType;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -26,11 +29,16 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.UUID;
 
 public class TractorEntity extends Entity {
     public static final Identifier SPAWN_PACKET_IDENTIFIER = new Identifier(WarTractors.modid, "tractor_spawn");
+
+    public static final TrackedData<Float> RED = DataTracker.registerData(TractorEntity.class, TrackedDataHandlerRegistry.FLOAT);
+    public static final TrackedData<Float> GREEN = DataTracker.registerData(TractorEntity.class, TrackedDataHandlerRegistry.FLOAT);
+    public static final TrackedData<Float> BLUE = DataTracker.registerData(TractorEntity.class, TrackedDataHandlerRegistry.FLOAT);
 
     private ITractorChassis chassis;
     private ITractorWheel wheel;
@@ -65,13 +73,17 @@ public class TractorEntity extends Entity {
 
     @Override
     protected void initDataTracker() {
+        this.dataTracker.startTracking(RED, 1f);
+        this.dataTracker.startTracking(GREEN, 1f);
+        this.dataTracker.startTracking(BLUE, 1f);
     }
 
     @Override
     protected void readCustomDataFromTag(CompoundTag tag) {
         try {
-            System.out.println(tag.getString("chassis"));
-            System.out.println(tag.getString("wheel"));
+            this.dataTracker.set(RED, tag.getFloat("red"));
+            this.dataTracker.set(GREEN, tag.getFloat("green"));
+            this.dataTracker.set(BLUE, tag.getFloat("blue"));
             this.chassis = WarTractors.CHASSIS.getOrDefault(new Identifier(tag.getString("chassis")), BasicChassis.INSTANCE);
             this.wheel = WarTractors.WHEELS.getOrDefault(new Identifier(tag.getString("wheel")), BasicWheel.INSTANCE);
             weapons.clear();
@@ -94,6 +106,9 @@ public class TractorEntity extends Entity {
     @Override
     protected void writeCustomDataToTag(CompoundTag tag) {
         try {
+            tag.putFloat("red", dataTracker.get(RED));
+            tag.putFloat("green", dataTracker.get(GREEN));
+            tag.putFloat("blue", dataTracker.get(BLUE));
             tag.putString("chassis", chassis.getIdentifier().toString());
             tag.putString("wheel", wheel.getIdentifier().toString());
             ListTag listTag = new ListTag();
@@ -163,6 +178,28 @@ public class TractorEntity extends Entity {
 
     public ITractorWheel getWheel() {
         return wheel;
+    }
+
+    public void color(int colorInt) {
+        color(new Color(colorInt));
+    }
+
+    public void color(Color color) {
+        dataTracker.set(RED, color.getRed() / 255f);
+        dataTracker.set(GREEN, color.getGreen() / 255f);
+        dataTracker.set(BLUE, color.getBlue() / 255f);
+    }
+
+    public float getRed() {
+        return dataTracker.get(RED);
+    }
+
+    public float getBlue() {
+        return dataTracker.get(BLUE);
+    }
+
+    public float getGreen() {
+        return dataTracker.get(GREEN);
     }
 
     @Override

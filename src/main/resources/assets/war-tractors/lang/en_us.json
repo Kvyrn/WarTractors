@@ -1,3 +1,6 @@
 {
-    "entity.war-tractors.tractor": "Tractor"
+    "entity.war-tractors.tractor": "Tractor",
+
+    "war-tractors.command.tractor.invalid-color": "Ivalid color \"%s\"!",
+    "war-tractors.command.tractor.non-tractor": "Target is not a tractor!"
 }
