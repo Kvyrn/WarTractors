@@ -5,32 +5,32 @@
     "name": "WarTractors",
     "description": "Fight with... tractors?",
     "authors": [
-        "URTOJU"
+        "Treesoid"
     ],
     "contact": {
-        "repo": "https://www.github.com/URTOJU/WarTractors",
-        "homepage": "https://www.github.com/URTOJU/WarTractors",
-        "issues": "https://www.github.com/URTOJU/WarTractors/issues",
-        "sources": "https://www.github.com/URTOJU/WarTractors"
+        "repo": "https://www.github.com/Treesoid/WarTractors",
+        "homepage": "https://www.github.com/Treesoid/WarTractors",
+        "issues": "https://www.github.com/Treesoid/WarTractors/issues",
+        "sources": "https://www.github.com/Treesoid/WarTractors"
     },
-    "license": "All-Rights-Reserved",
+    "license": "MIT",
     "icon": "assets/war-tractors/icon.png",
     "environment": "*",
     "entrypoints": {
         "client": [
-            "io.github.urtoju.wartractors.client.WarTractorsClient"
+          "io.github.treesoid.wartractors.client.WarTractorsClient"
         ],
         "main": [
-            "io.github.urtoju.wartractors.WarTractors"
+          "io.github.treesoid.wartractors.WarTractors"
         ]
     },
     "mixins": [
         "war-tractors.mixins.json"
     ],
     "depends": {
-        "fabricloader": ">=0.11.3",
+        "fabricloader": ">=0.14.6",
         "fabric": "*",
-        "minecraft": "1.16.5",
-        "libgui": "3.4.0+1.16.5"
+        "minecraft": "~1.19",
+        "libgui": ">=6.0.0"
     }
 }
